@@ -26,6 +26,11 @@ body{
   background-color: hsl(217, 19%, 24%);
   border-radius: 10px;
   position: relative;
+  padding: 15px;
+}
+
+p{
+  text-align: center;
 }
 
 p::after{
