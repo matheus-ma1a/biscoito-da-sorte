@@ -1,14 +1,12 @@
-import * as dotenv from 'dotenv' 
+import * as dotenv from 'dotenv'
 dotenv.config()
 import express from 'express'
 import cors from 'cors'
 import { Configuration, OpenAIApi } from "openai" ;
 
-let chave = process.env.KEY
-
 
 const configuration = new Configuration({
-  apiKey: chave
+  apiKey: process.env.VITE_KEY
 });
 
 const openai = new OpenAIApi(configuration);
