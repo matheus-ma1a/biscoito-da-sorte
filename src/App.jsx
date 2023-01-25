@@ -6,12 +6,15 @@ function App() {
 
   function getMessage(){
      
-    fetch('https://jsonplaceholder.typicode.com/posts/1')
+    fetch('http://localhost:3000',{
+      method: "post",
+    })
     .then((response) => response.json())
-    .then((json) => setmessage(json.title));
+    .then((json) => setmessage(json.result));
 
     
   }
+
 
   return (
     <div className="App">
