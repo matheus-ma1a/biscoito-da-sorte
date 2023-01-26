@@ -9,10 +9,7 @@ const configuration = new Configuration({
   apiKey: process.env.VITE_KEY
 });
 
-console.log(process.env.VITE_KEY)
-
 const openai = new OpenAIApi(configuration);
-
 
 const app = express()
 const port = 3000
@@ -32,4 +29,3 @@ app.post('/', async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)
 })
-
