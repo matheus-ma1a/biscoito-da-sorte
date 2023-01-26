@@ -1,23 +1,29 @@
 import { useState } from 'react'
 import './App.css'
+import { Configuration, OpenAIApi } from "openai" ;
 
 function App() {
+
+  const configuration = new Configuration({
+    apiKey: import.meta.env.VITE_KEY
+  });
   
+  const openai = new OpenAIApi(configuration);
   const [message, setmessage] = useState()
   const [load, setLoad] = useState()
 
-  function getMessage(){
+  async function getMessage(){
     setLoad(true)
-     
-    fetch('http://localhost:3000',{
-      method: "post",
-    })
-    .then((response) => response.json())
-    .then((json) => {
-      setLoad(false)
-      setmessage(json.result)
-    });
 
+    await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: 'me faca um mendagem estilo biscoito da sorte',
+        temperature: 0.6,
+        max_tokens: 60,
+      }).then(res => {
+        setmessage(res.data.choices[0].text)
+        setLoad(false)
+      } )
   }
 
   return (
