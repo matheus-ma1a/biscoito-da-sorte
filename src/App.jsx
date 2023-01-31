@@ -1,35 +1,33 @@
 import { useState } from 'react'
 import './App.css'
-import { Configuration, OpenAIApi } from "openai" ;
+
 
 function App() {
 
-  const configuration = new Configuration({
-    apiKey: import.meta.env.VITE_KEY
-  });
-  
-  const openai = new OpenAIApi(configuration);
   const [message, setmessage] = useState()
   const [load, setLoad] = useState()
 
-  async function getMessage(){
+  function getMessage(){
     setLoad(true)
+    let url = 'http://localhost:3002/';
 
-    await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: 'me faca um mendagem estilo biscoito da sorte',
-        temperature: 0.6,
-        max_tokens: 60,
-      }).then(res => {
-        setmessage(res.data.choices[0].text)
+    let options = {
+      method: 'POST',
+    };
+
+    fetch(url, options)
+      .then(res => res.json())
+      .then(json => {
+        setmessage(json)
         setLoad(false)
-      } )
+      })
+      .catch(err => console.error('error:' + err));
   }
 
   return (
     <div className="App">
       <div className="main">
-        <p className="textmain">{load ? 'loading...' : message}</p>
+        <p className="textmain">{ load ? 'loading...' : message}</p>
         <button onClick={getMessage} ><img src="/icons8-dice-50.png" alt="" /></button>
       </div>
     </div>
