@@ -9,7 +9,7 @@ function App() {
 
   function getMessage(){
     setLoad(true)
-    let url = 'http://localhost:3002/';
+    let url = 'https://api-biscoito-da-sorte.vercel.app/resposta';
 
     let options = {
       method: 'POST',
