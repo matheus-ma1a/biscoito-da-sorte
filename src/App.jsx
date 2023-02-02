@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { motion } from 'framer-motion'
 
@@ -7,7 +7,25 @@ function App() {
 
   const [message, setmessage] = useState()
   const [load, setLoad] = useState()
-  const [rotate, setRotate] = useState()
+  const [isOpen, setIsOpen ] = useState(false)
+
+
+  
+  const handleButton = ()=>{
+    
+    let validate = isOpen 
+
+    validate = !validate
+
+    setIsOpen(validate)
+    if(validate){
+      getMessage()
+      
+    }else{
+      setmessage('')
+    }
+ }
+
 
   function getMessage(){
     setLoad(true)
@@ -34,16 +52,26 @@ function App() {
       className="App">
 
       <div className="main">
-        <p className="textmain">{ load ? 'loading...' : message}</p>
-        <motion.button 
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 1.1 }}
-          onClick={getMessage}>
+
+        <div className="label">
+
+          <motion.img
+            animate={{x: isOpen? -300 : 0 }}
+            className='biscoito Left' src="/biscoitoLeftAtivo 2.svg" alt="" />
 
           <motion.img 
-          onClick={()=>{setRotate(!rotate)}} 
-          src="/icons8-dice-50.png" alt=""
-          animate={{rotate: rotate? 360 : 0}} />
+            animate={{x: isOpen? 300 : 0}}
+            className='biscoito Right' src="/biscoitoRightAtivo 1.svg" alt="" />
+
+        </div>
+
+        <p className="textmain">{ load ? 'loading...' : message}</p>
+        <motion.button
+          disabled={load && true} 
+          onClick={handleButton}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 1.1 }}>
+          Abra seu biscoito da sorte
 
         </motion.button>
       </div>
