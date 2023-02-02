@@ -33,25 +33,6 @@ p{
   text-align: center;
 }
 
-p::after{
-  content: "";
-  height: 1px;
-  width: 35%;
-  background: hsl(217, 19%, 38%);
-  position:absolute;
-  bottom: 60px;
-  right: 20px;
-}
-
-p::before{
-  content: "";
-  height: 1px;
-  width: 35%;
-  background: hsl(217, 19%, 38%);
-  position:absolute;
-  bottom: 60px;
-  left: 20px;
-}
 
 button{
   position: absolute;
@@ -61,5 +42,8 @@ button{
   width: 70px;
   height: 70px;
   background: hsl(150, 100%, 66%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
