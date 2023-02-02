@@ -65,7 +65,7 @@ function App() {
 
         </div>
 
-        <p className="textmain">{ load ? 'Caregando sua sorte...' : message}</p>
+        <p className="textmain">{ load ? 'Carregando sua sorte...' : message}</p>
         <motion.button
           disabled={load && true} 
           onClick={handleButton}
