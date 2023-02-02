@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { motion } from 'framer-motion'
 
 
 function App() {
@@ -28,7 +29,11 @@ function App() {
     <div className="App">
       <div className="main">
         <p className="textmain">{ load ? 'loading...' : message}</p>
-        <button onClick={getMessage} ><img src="/icons8-dice-50.png" alt="" /></button>
+        <motion.button 
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 1.1 }}
+          onClick={getMessage}
+          ><img src="/icons8-dice-50.png" alt="" /></motion.button>
       </div>
     </div>
   )
